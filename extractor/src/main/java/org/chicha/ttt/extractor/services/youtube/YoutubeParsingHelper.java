@@ -151,9 +151,12 @@ public final class YoutubeParsingHelper {
      * The InnerTube API key which should be used by YouTube's desktop website, used as a fallback
      * if the extraction of the real one failed.
      */
-    private static final String HARDCODED_KEY1 = "AIzaSyAO_";
+   /* private static final String HARDCODED_KEY1 = "AIzaSyAO_";
     private static final String HARDCODED_KEY2 = "FJ2SlqU8Q4STEHLGCilw_";
-    private static final String HARDCODED_KEY3 = "Y9_11qcW8";
+    private static final String HARDCODED_KEY3 = "Y9_11qcW8";*/
+    private static final String HARDCODED_KEY1 = "AIzaSyDE1-";
+    private static final String HARDCODED_KEY2 = "Ehom9fApq2-";
+    private static final String HARDCODED_KEY3 = "yneoLjPUvkMhOLqtRU";
 
 
     /**
@@ -171,9 +174,12 @@ public final class YoutubeParsingHelper {
      * The InnerTube API key used by the {@code ANDROID} client. Found with the help of
      * reverse-engineering app network requests.
      */
-    private static final String ANDROID_YOUTUBE_KEY1 = "AIzaSyA8eiZmM1FaDVjRy-";
+    /* private static final String ANDROID_YOUTUBE_KEY1 = "AIzaSyA8eiZmM1FaDVjRy-";
     private static final String ANDROID_YOUTUBE_KEY2 = "df2KTyQ_vz_";
-    private static final String ANDROID_YOUTUBE_KEY3 = "yYM39w";
+    private static final String ANDROID_YOUTUBE_KEY3 = "yYM39w";*/
+    private static final String ANDROID_YOUTUBE_KEY1 = "AIzaSyBvugNO0hAY";
+    private static final String ANDROID_YOUTUBE_KEY2 = "TomOztU8Nemp";
+    private static final String ANDROID_YOUTUBE_KEY3 = "N1Buz5TC0Ls";
 
 
     /**
@@ -192,9 +198,12 @@ public final class YoutubeParsingHelper {
      * The InnerTube API key used by the {@code iOS} client. Found with the help of
      * reverse-engineering app network requests.
      */
-    private static final String IOS_YOUTUBE_KEY1 = "AIzaSyB-";
+    /*   private static final String IOS_YOUTUBE_KEY1 = "AIzaSyB-";
     private static final String IOS_YOUTUBE_KEY2 = "63vPrdThhKuerbB2N_";
-    private static final String IOS_YOUTUBE_KEY3 = "l7Kwwcxj6yUAc";
+    private static final String IOS_YOUTUBE_KEY3 = "l7Kwwcxj6yUAc";*/
+    private static final String IOS_YOUTUBE_KEY1 = "AIzaSyACsCddB";
+    private static final String IOS_YOUTUBE_KEY2 = "Ve7xJ27Vg0cM-";
+    private static final String IOS_YOUTUBE_KEY3 = "YnIXon7CVlZiY";
 
 
     /**
