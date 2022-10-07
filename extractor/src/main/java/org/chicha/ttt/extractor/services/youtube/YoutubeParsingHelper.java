@@ -151,7 +151,7 @@ public final class YoutubeParsingHelper {
      * The InnerTube API key which should be used by YouTube's desktop website, used as a fallback
      * if the extraction of the real one failed.
      */
-    private static final String HARDCODED_KEY = "AAAAAAAAAAAAAAAAAAAAA";
+    private static final String HARDCODED_KEY = "AIzaSyDE1-Ehom9fApq2-yneoLjPUvkMhOLqtRU";
 
     /**
      * The hardcoded client version of the Android app used for InnerTube requests with this
@@ -168,7 +168,7 @@ public final class YoutubeParsingHelper {
      * The InnerTube API key used by the {@code ANDROID} client. Found with the help of
      * reverse-engineering app network requests.
      */
-    private static final String ANDROID_YOUTUBE_KEY = "AAAAAAAAAAAAAAAAAAAAA";
+    private static final String ANDROID_YOUTUBE_KEY = "AIzaSyBvugNO0hAYTomOztU8NempN1Buz5TC0Ls";
 
     /**
      * The hardcoded client version of the iOS app used for InnerTube requests with this
@@ -186,7 +186,7 @@ public final class YoutubeParsingHelper {
      * The InnerTube API key used by the {@code iOS} client. Found with the help of
      * reverse-engineering app network requests.
      */
-    private static final String IOS_YOUTUBE_KEY = "AAAAAAAAAAAAAAAAAAAAA";
+    private static final String IOS_YOUTUBE_KEY = "AIzaSyACsCddBVe7xJ27Vg0cM-YnIXon7CVlZiY";
 
     /**
      * The hardcoded client version used for InnerTube requests with the TV HTML5 embed client.
@@ -197,7 +197,7 @@ public final class YoutubeParsingHelper {
     private static String key;
 
     private static final String[] HARDCODED_YOUTUBE_MUSIC_KEY =
-            {"AAAAAAAAAAAAAAAAAAAAA", "67", "1.20220808.01.00"};
+            {"AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30", "67", "1.20220808.01.00"};
     private static String[] youtubeMusicKey;
 
     private static boolean keyAndVersionExtracted = false;
