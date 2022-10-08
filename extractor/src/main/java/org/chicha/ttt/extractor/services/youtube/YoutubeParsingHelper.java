@@ -113,7 +113,7 @@ public final class YoutubeParsingHelper {
      *
      * <p>
      * It is composed of 16 characters which are generated from
-     * {@link #CONTENT_PLAYBACK_NONCE_ALPHABET this alphabet}, with the use of strong random
+     * {@link #CONTENT_PLAYBACK_NONCE_ALPHABET_ENCODE this alphabet}, with the use of strong random
      * values.
      * </p>
      *
@@ -152,8 +152,7 @@ public final class YoutubeParsingHelper {
      * The InnerTube API key which should be used by YouTube's desktop website, used as a fallback
      * if the extraction of the real one failed.
      */
-    private static final String HARDCODED = "AIzaSyDE1-Ehom9fApq2-yneoLjPUvkMhOLqtRU";
-    private static final String HARDCODED_KEY_ENCODE = Base64.getUrlEncoder().encodeToString(HARDCODED.getBytes());
+    private static final String HARDCODED_KEY_ENCODE = Base64.getUrlEncoder().encodeToString("AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8".getBytes());
     /**
      * The hardcoded client version of the Android app used for InnerTube requests with this
      * client.
@@ -169,8 +168,7 @@ public final class YoutubeParsingHelper {
      * The InnerTube API key used by the {@code ANDROID} client. Found with the help of
      * reverse-engineering app network requests.
      */
-    private static final String ANDROID_KEY = "AIzaSyBvugNO0hAYTomOztU8NempN1Buz5TC0Ls";
-    private static final String ANDROID_KEY_ENCODE = Base64.getUrlEncoder().encodeToString(ANDROID_KEY.getBytes());
+    private static final String ANDROID_KEY_ENCODE = Base64.getUrlEncoder().encodeToString("AIzaSyA8eiZmM1FaDVjRy-df2KTyQ_vz_yYM39w".getBytes());
 
     /**
      * The hardcoded client version of the iOS app used for InnerTube requests with this
@@ -188,8 +186,7 @@ public final class YoutubeParsingHelper {
      * The InnerTube API key used by the {@code iOS} client. Found with the help of
      * reverse-engineering app network requests.
      */
-    private static final String IOS_KEY = "AIzaSyACsCddBVe7xJ27Vg0cM-YnIXon7CVlZiY";
-    private static final String IOS_KEY_ENCODE = Base64.getUrlEncoder().encodeToString(IOS_KEY.getBytes());
+    private static final String IOS_KEY_ENCODE = Base64.getUrlEncoder().encodeToString("AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc".getBytes());
     /**
      * The hardcoded client version used for InnerTube requests with the TV HTML5 embed client.
      */
@@ -197,9 +194,8 @@ public final class YoutubeParsingHelper {
 
     private static String clientVersion;
     private static String key;
-
     private static final String[] HARDCODED_YOUTUBE_MUSIC_KEY =
-            {"AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30", "67", "1.20220808.01.00"};
+            {Base64.getUrlEncoder().encodeToString("AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30".getBytes()), "67", "1.20220808.01.00"};
     private static String[] youtubeMusicKey;
 
     private static boolean keyAndVersionExtracted = false;
@@ -219,9 +215,7 @@ public final class YoutubeParsingHelper {
     private static final String INNERTUBE_CLIENT_NAME_REGEX =
             "INNERTUBE_CONTEXT_CLIENT_NAME\":([0-9]+?),";
 
-    private static final String CONTENT_PLAYBACK_NONCE_ALPHABET =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-
+    private static final String CONTENT_PLAYBACK_NONCE_ALPHABET_ENCODE = Base64.getUrlEncoder().encodeToString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_".getBytes());
     /**
      * The device machine id for the iPhone 13, used to get 60fps with the {@code iOS} client.
      *
@@ -817,9 +811,11 @@ public final class YoutubeParsingHelper {
 
     public static boolean isHardcodedYoutubeMusicKeyValid() throws IOException,
             ReCaptchaException {
+        final byte[] decodedBytes = Base64.getUrlDecoder().decode(HARDCODED_YOUTUBE_MUSIC_KEY[0]);
+        final  String HARDCODED_YOUTUBE_MUSIC_KEY_DECODE = new String(decodedBytes);
         final String url =
                 "https://music.youtube.com/youtubei/v1/music/get_search_suggestions?alt=json&key="
-                        + HARDCODED_YOUTUBE_MUSIC_KEY[0] + DISABLE_PRETTY_PRINT_PARAMETER;
+                        + HARDCODED_YOUTUBE_MUSIC_KEY_DECODE+ DISABLE_PRETTY_PRINT_PARAMETER;
 
         // @formatter:off
         final byte[] json = JsonWriter.string()
@@ -1627,8 +1623,10 @@ public final class YoutubeParsingHelper {
      */
     @Nonnull
     public static String generateContentPlaybackNonce() {
+        final byte[] decodedBytes = Base64.getUrlDecoder().decode(CONTENT_PLAYBACK_NONCE_ALPHABET_ENCODE);
+        final  String CONTENT_PLAYBACK_NONCE_ALPHABET_DECODE = new String(decodedBytes);
         return RandomStringFromAlphabetGenerator.generate(
-                CONTENT_PLAYBACK_NONCE_ALPHABET, 16, numberGenerator);
+                CONTENT_PLAYBACK_NONCE_ALPHABET_DECODE, 16, numberGenerator);
     }
 
     /**
@@ -1644,8 +1642,10 @@ public final class YoutubeParsingHelper {
      */
     @Nonnull
     public static String generateTParameter() {
+        final byte[] decodedBytes = Base64.getUrlDecoder().decode(CONTENT_PLAYBACK_NONCE_ALPHABET_ENCODE);
+        final  String CONTENT_PLAYBACK_NONCE_ALPHABET_DECODE = new String(decodedBytes);
         return RandomStringFromAlphabetGenerator.generate(
-                CONTENT_PLAYBACK_NONCE_ALPHABET, 12, numberGenerator);
+                CONTENT_PLAYBACK_NONCE_ALPHABET_DECODE, 12, numberGenerator);
     }
 
     /**
