@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
 
 public final class YoutubeParsingHelper {
 
+
     private YoutubeParsingHelper() {
     }
 
@@ -148,11 +149,7 @@ public final class YoutubeParsingHelper {
      */
     private static final String HARDCODED_CLIENT_VERSION = "2.20220809.02.00";
 
-    /**
-     * The InnerTube API key which should be used by YouTube's desktop website, used as a fallback
-     * if the extraction of the real one failed.
-     */
-    private static final String HARDCODED_KEY_ENCODE = Base64.getUrlEncoder().encodeToString("AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8".getBytes());
+
     /**
      * The hardcoded client version of the Android app used for InnerTube requests with this
      * client.
@@ -164,11 +161,6 @@ public final class YoutubeParsingHelper {
      */
     private static final String ANDROID_YOUTUBE_CLIENT_VERSION = "17.31.35";
 
-    /**
-     * The InnerTube API key used by the {@code ANDROID} client. Found with the help of
-     * reverse-engineering app network requests.
-     */
-    private static final String ANDROID_KEY_ENCODE = Base64.getUrlEncoder().encodeToString("AIzaSyA8eiZmM1FaDVjRy-df2KTyQ_vz_yYM39w".getBytes());
 
     /**
      * The hardcoded client version of the iOS app used for InnerTube requests with this
@@ -182,11 +174,7 @@ public final class YoutubeParsingHelper {
      */
     private static final String IOS_YOUTUBE_CLIENT_VERSION = "17.31.4";
 
-    /**
-     * The InnerTube API key used by the {@code iOS} client. Found with the help of
-     * reverse-engineering app network requests.
-     */
-    private static final String IOS_KEY_ENCODE = Base64.getUrlEncoder().encodeToString("AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc".getBytes());
+
     /**
      * The hardcoded client version used for InnerTube requests with the TV HTML5 embed client.
      */
@@ -195,7 +183,7 @@ public final class YoutubeParsingHelper {
     private static String clientVersion;
     private static String key;
     private static final String[] HARDCODED_YOUTUBE_MUSIC_KEY =
-            {Base64.getUrlEncoder().encodeToString("AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30".getBytes()), "67", "1.20220808.01.00"};
+            {"QUl6YVN5QzlYTDNaaldkZFh5YTZYNzRkSm9DVEwtV0VZRkROWDMw", "67", "1.20220808.01.00"};
     private static String[] youtubeMusicKey;
 
     private static boolean keyAndVersionExtracted = false;
@@ -603,7 +591,7 @@ public final class YoutubeParsingHelper {
         // This endpoint is fetched by the YouTube website to get the items of its main menu and is
         // pretty lightweight (around 30kB)
 
-        final byte[] decodedBytes = Base64.getUrlDecoder().decode(HARDCODED_KEY_ENCODE);
+        final byte[] decodedBytes = Base64.getUrlDecoder().decode("QUl6YVN5QU9fRkoyU2xxVThRNFNURUhMR0NpbHdfWTlfMTFxY1c4");
         final  String HARDCODED_KEY_DECODE = new String(decodedBytes);
         final Response response = getDownloader().post(YOUTUBEI_V1_URL + "guide?key="
                 + HARDCODED_KEY_DECODE + DISABLE_PRETTY_PRINT_PARAMETER, headers, body);
@@ -769,14 +757,14 @@ public final class YoutubeParsingHelper {
 
         // Fallback to the hardcoded one if it's valid
         if (areHardcodedClientVersionAndKeyValid()) {
-            key = HARDCODED_KEY_ENCODE;
+            key = "QUl6YVN5QU9fRkoyU2xxVThRNFNURUhMR0NpbHdfWTlfMTFxY1c4";
             return key;
         }
 
         // The ANDROID API key is also valid with the WEB client so return it if we couldn't
         // extract the WEB API key. This can be used as a way to fingerprint the extractor in this
         // case
-        return ANDROID_KEY_ENCODE;
+        return "QUl6YVN5QThlaVptTTFGYURWalJ5LWRmMktUeVFfdnpfeVlNMzl3";
     }
 
     /**
@@ -1103,7 +1091,7 @@ public final class YoutubeParsingHelper {
             final byte[] body,
             @Nonnull final Localization localization,
             @Nullable final String endPartOfUrlRequest) throws IOException, ExtractionException {
-        final byte[] decodedBytes = Base64.getUrlDecoder().decode(ANDROID_KEY_ENCODE);
+        final byte[] decodedBytes = Base64.getUrlDecoder().decode("QUl6YVN5QThlaVptTTFGYURWalJ5LWRmMktUeVFfdnpfeVlNMzl3");
         final  String ANDROID_KEY_DECODE = new String(decodedBytes);
         return getMobilePostResponse(endpoint, body, localization,
                 getAndroidUserAgent(localization), ANDROID_KEY_DECODE, endPartOfUrlRequest);
@@ -1114,7 +1102,7 @@ public final class YoutubeParsingHelper {
             final byte[] body,
             @Nonnull final Localization localization,
             @Nullable final String endPartOfUrlRequest) throws IOException, ExtractionException {
-        final byte[] decodedBytes = Base64.getUrlDecoder().decode(IOS_KEY_ENCODE);
+        final byte[] decodedBytes = Base64.getUrlDecoder().decode("QUl6YVN5Qi02M3ZQcmRUaGhLdWVyYkIyTl9sN0t3d2N4ajZ5VUFj");
         final String IOS_KEY_DECODE = new String(decodedBytes);
         return getMobilePostResponse(endpoint, body, localization, getIosUserAgent(localization),
                 IOS_KEY_DECODE, endPartOfUrlRequest);
