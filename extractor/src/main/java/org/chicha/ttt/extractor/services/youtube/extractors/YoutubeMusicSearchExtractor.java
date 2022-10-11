@@ -38,6 +38,7 @@ import org.chicha.ttt.extractor.utils.Parser;
 import org.chicha.ttt.extractor.utils.Utils;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -59,9 +60,10 @@ public class YoutubeMusicSearchExtractor extends SearchExtractor {
     public void onFetchPage(@Nonnull final Downloader downloader)
             throws IOException, ExtractionException {
         final String[] youtubeMusicKeys = YoutubeParsingHelper.getYoutubeMusicKey();
-
+        final byte[] decodedBytes = Base64.getUrlDecoder().decode(youtubeMusicKeys[0]);
+        final String youtubeMusicKeys_DECODE = new String(decodedBytes);
         final String url = "https://music.youtube.com/youtubei/v1/search?alt=json&key="
-                + youtubeMusicKeys[0] + DISABLE_PRETTY_PRINT_PARAMETER;
+                + youtubeMusicKeys_DECODE + DISABLE_PRETTY_PRINT_PARAMETER;
 
         final String params;
 

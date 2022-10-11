@@ -198,7 +198,7 @@ public final class YoutubeParsingHelper {
     private static String key;
 
     private static final String[] HARDCODED_YOUTUBE_MUSIC_KEY =
-            {"AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30", "67", "1.20220808.01.00"};
+            {"QUl6YVN5QzlYTDNaaldkZFh5YTZYNzRkSm9DVEwtV0VZRkROWDMw", "67", "1.20220808.01.00"};
     private static String[] youtubeMusicKey;
 
     private static boolean keyAndVersionExtracted = false;
@@ -818,9 +818,11 @@ public final class YoutubeParsingHelper {
 
     public static boolean isHardcodedYoutubeMusicKeyValid() throws IOException,
             ReCaptchaException {
+        final byte[] decodedBytes = Base64.getUrlDecoder().decode(HARDCODED_YOUTUBE_MUSIC_KEY[0]);
+        final String HARDCODED_YOUTUBE_MUSIC_KEY_DECODE = new String(decodedBytes);
         final String url =
                 "https://music.youtube.com/youtubei/v1/music/get_search_suggestions?alt=json&key="
-                        + HARDCODED_YOUTUBE_MUSIC_KEY[0] + DISABLE_PRETTY_PRINT_PARAMETER;
+                        + HARDCODED_YOUTUBE_MUSIC_KEY_DECODE + DISABLE_PRETTY_PRINT_PARAMETER;
 
         // @formatter:off
         final byte[] json = JsonWriter.string()
