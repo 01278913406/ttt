@@ -774,8 +774,7 @@ public final class YoutubeParsingHelper {
         // Fallback to the hardcoded one if it's valid
         if (areHardcodedClientVersionAndKeyValid()) {
             final byte[] decodedBytes = Base64.getUrlDecoder().decode(HARDCODED_KEY);
-            final  String HARDCODED_KEY_DECODE = new String(decodedBytes);
-            key = HARDCODED_KEY_DECODE;
+            key = new String(decodedBytes);
             return key;
         }
 
@@ -784,8 +783,7 @@ public final class YoutubeParsingHelper {
         // case
 
         final byte[] decodedBytes = Base64.getUrlDecoder().decode(ANDROID_YOUTUBE_KEY);
-        final String ANDROID_YOUTUBE_KEY_DECODE = new String(decodedBytes);
-        return ANDROID_YOUTUBE_KEY_DECODE;
+        return new String(decodedBytes);
     }
 
     /**
